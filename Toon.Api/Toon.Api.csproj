@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97C77C37-A80A-41C4-8F03-568ABB3A6D04}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Toon.Api</RootNamespace>
+    <AssemblyName>Toon.Api</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Clients\IApiClient.cs" />
+    <Compile Include="Clients\IAuthenticationClient.cs" />
+    <Compile Include="Clients\AuthenticationClient.cs" />
+    <Compile Include="DataContracts\DataAttributes\CacheEntity.cs" />
+    <Compile Include="DataContracts\DataAttributes\BenchmarkData.cs" />
+    <Compile Include="DataContracts\DataAttributes\BenchmarkFriends.cs" />
+    <Compile Include="DataContracts\DataAttributes\BenchmarkInfo.cs" />
+    <Compile Include="DataContracts\DataAttributes\BillingInfo.cs" />
+    <Compile Include="DataContracts\DataAttributes\DataValues.cs" />
+    <Compile Include="DataContracts\DataAttributes\Device.cs" />
+    <Compile Include="DataContracts\DataAttributes\DeviceConfigInfo.cs" />
+    <Compile Include="DataContracts\DataAttributes\DeviceStatusInfo.cs" />
+    <Compile Include="DataContracts\DataAttributes\DisplayCommError.cs" />
+    <Compile Include="DataContracts\DataAttributes\Friend.cs" />
+    <Compile Include="DataContracts\DataAttributes\GasUsage.cs" />
+    <Compile Include="DataContracts\DataAttributes\GraphData.cs" />
+    <Compile Include="DataContracts\DataAttributes\HeatUsage.cs" />
+    <Compile Include="DataContracts\DataAttributes\Info.cs" />
+    <Compile Include="DataContracts\DataAttributes\InSwitchAllTotal.cs" />
+    <Compile Include="DataContracts\DataAttributes\Month.cs" />
+    <Compile Include="DataContracts\DataAttributes\MonthData.cs" />
+    <Compile Include="DataContracts\DataAttributes\PowerUsage.cs" />
+    <Compile Include="DataContracts\DataAttributes\Schedule.cs" />
+    <Compile Include="DataContracts\DataAttributes\State.cs" />
+    <Compile Include="DataContracts\DataAttributes\ThermostatInfo.cs" />
+    <Compile Include="DataContracts\DataAttributes\ThermostatProgram.cs" />
+    <Compile Include="DataContracts\DataAttributes\ThermostatStates.cs" />
+    <Compile Include="DataContracts\ToonStateResponse.cs" />
+    <Compile Include="Enums\ProgramState.cs" />
+    <Compile Include="Enums\ThermostatState.cs" />
+    <Compile Include="Enums\BurnerInfo.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\DateTimeConverter.cs" />
+    <Compile Include="Clients\ApiClient.cs" />
+    <Compile Include="Helpers\NotifyPropertyChanged.cs" />
+    <Compile Include="Helpers\ThermostatStateEnumConverter.cs" />
+    <Compile Include="Helpers\ProgramStateEnumConverter.cs" />
+    <Compile Include="Mocks\MockedApiClient.cs" />
+    <Compile Include="Mocks\MockedAuthenticationClient.cs" />
+    <Compile Include="Mocks\MockedData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TargetPlatform Include="Windows, Version=8.1" />
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
